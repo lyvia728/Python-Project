@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>All Registrations</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+      th {
+        background: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>All Registrations</h2>
+
+    <table>
+      <tr>
+        <th>ID Number</th>
+        <th>Full Names</th>
+        <th>Surname</th>
+        <th>Cellphone</th>
+        <th>Submitted At</th>
+      </tr>
+
+      {% for reg in registrations %}
+      <tr>
+        <td>{{ reg.id_number }}</td>
+        <td>{{ reg.full_names }}</td>
+        <td>{{ reg.surname }}</td>
+        <td>{{ reg.cellphone }}</td>
+        <td>{{ reg.created_at }}</td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5">No submissions yet.</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <br />
+    <a href="/">Back to Registration</a>
+  </body>
+</html>

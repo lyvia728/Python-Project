@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identity Verification</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'register/style.css' %}">
+
+</head>
+
+<body>
+    <div class="container">
+        <h2>Identity Verification</h2>
+        <p>
+            We need to verify your identity. Enter your 13-digit South African ID number,
+            full name, surname, and cellphone number to proceed.
+        </p>
+
+        <form class="voteForm">
+            <div>
+                <label for="idNumber">ID Number</label>
+                <input type="text" id="idNumber" name="id_number" placeholder="Enter your ID number" minlength="13"
+                    maxlength="13" required>
+            </div>
+
+            <div>
+                <label for="fullName">Full Name(s)</label>
+                <input type="text" id="fullName" name="full_names" placeholder="Enter your full name(s)" required>
+            </div>
+
+            <div>
+                <label for="surname">Surname</label>
+                <input type="text" id="surname" name="surname" placeholder="Enter your surname" required>
+            </div>
+
+            <div>
+                <label for="cellphone">Cellphone Number</label>
+                <input type="text" id="cellphone" name="cellphone" placeholder="Enter your cellphone number"
+                    minlength="10" maxlength="10" required>
+            </div>
+
+            <div>
+                <label for="confirmCellphone">Confirm Cellphone Number</label>
+                <input type="text" id="confirmCellphone" name="confirm_cellphone"
+                    placeholder="Confirm your cellphone number" minlength="10" maxlength="10" required>
+            </div>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    
+
+</body>
+
+</html>

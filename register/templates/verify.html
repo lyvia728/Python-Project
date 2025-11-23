@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Identity Verification</title>
+    <link rel="stylesheet" href="{% static 'register/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Identity Verification</h2>
+        <p>Enter your details below to verify your identity.</p>
+
+        <form method="POST" class="voteForm">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
