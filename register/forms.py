@@ -1,5 +1,7 @@
 from django import forms
 from .models import Identity
+from datetime import date
+
 
 class IdentityVerificationForm(forms.ModelForm):
     confirm_cellphone = forms.CharField(
@@ -21,3 +23,11 @@ class IdentityVerificationForm(forms.ModelForm):
         if cellphone and confirm_cellphone and cellphone != confirm_cellphone:
             self.add_error("confirm_cellphone", "Cellphone numbers do not match.")
 
+        # Check age requirement
+        if dob:
+            today = date.today()
+            age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+            if age < 18:
+                self.add_error("dob", "You must be at least 18 years old to register to vote.")
+
+        return cleaned_data
