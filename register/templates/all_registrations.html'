@@ -1,0 +1,3 @@
+def all_registrations(request):
+    registrations = Identity.objects.all()
+    return render(request, "register/all_registrations.html", {"registrations": registrations})

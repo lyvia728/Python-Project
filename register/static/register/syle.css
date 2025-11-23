@@ -42,3 +42,13 @@
  .btn:hover {
      background: #0056b3;
  }
+
+ .alert.success {
+     color: green;
+     font-weight: bold;
+ }
+
+ .alert.error {
+     color: red;
+     font-weight: bold;
+ }

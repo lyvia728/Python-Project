@@ -11,6 +11,16 @@
         <h2>Identity Verification</h2>
         <p>Enter your details below to verify your identity.</p>
 
+     {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+
+
         <form method="POST" class="voteForm">
             {% csrf_token %}
             {{ form.as_p }}
