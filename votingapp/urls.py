@@ -3,5 +3,6 @@ from django.urls import path
 from . import views 
 
 urlpatterns = [
-path('', views.home, name='home')  # This makes it your homepage
+path('', views.home, name='index'),
+path('register/', views.register, name='register')  # This makes it your homepage
 ]

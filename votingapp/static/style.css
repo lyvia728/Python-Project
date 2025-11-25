@@ -233,3 +233,40 @@ header:has(.nav-links a:active) {
     outline-offset: 2px;
     background-color: rgba(255, 255, 255, 0.1); /* subtle background highlight */
 }
+
+
+/*register identification container*/
+.container {
+     max-width: 500px;
+     margin: auto;
+     background: white;
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+
+ label {
+     font-weight: bold;
+     margin-top: 10px;
+     display: block;
+ }
+
+ input {
+     width: 100%;
+     padding: 10px;
+     margin-top: 5px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+ }
+
+ .container button {
+     margin-top: 20px;
+     width: 100%;
+     padding: 12px;
+     background: #007bff;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 16px;
+ }
