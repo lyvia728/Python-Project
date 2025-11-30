@@ -7,7 +7,7 @@ def verify_identity(request):
         form = IdentityVerificationForm(request.POST)
         if form.is_valid():
             identity = form.save()  # save and get the instance
-            return render(request, "register/success.html", {
+            return render(request, "register/login.html", {
                 "full_names": identity.full_names,
                 "surname": identity.surname,
                 "id_number": identity.id_number,
@@ -18,3 +18,15 @@ def verify_identity(request):
 
     return render(request, "register/verify.html", {"form": form})
 
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("home")  # or dashboard
+        else:
+            messages.error(request, "Invalid username or password.")
+    return render(request, "register/login.html")
