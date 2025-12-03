@@ -1,0 +1,272 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #004d00;
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #005c2a;
+    color: white;
+    padding: 20px;
+}
+
+.logo {
+    height: 70px;
+    margin-right: 15px;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+
+
+nav a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    padding: 30px;
+    background-color: white;
+    max-width: 800px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+ul {
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+footer {
+    background-color: #004d00;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.disclaimer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #eafbe7;
+    border-left: 5px solid #004d00;
+    border-radius: 8px;
+}
+
+.disclaimer h2 {
+    color: #004d00;
+    margin-bottom: 10px;
+}
+
+.disclaimer p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+strong {
+    font-size: 1.2em;   /* adjust to match your headings */
+    font-weight: bold;
+    color: #004d00;     /* keep consistent with your theme */
+}
+
+button[type="submit"] {
+  background-color: #005c2a;   /* matches header green */
+  color: white;                /* consistent with header/footer text */
+  font-size: 1em;              /* matches body text scale */
+  font-weight: bold;           /* emphasizes importance */
+  padding: 12px 24px;          /* balanced spacing */
+  border: none;                /* clean look */
+  border-radius: 6px;          /* matches card/disclaimer rounding */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* subtle depth */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #004d00;   /* darker green for hover */
+  transform: scale(1.03);      /* gentle grow effect */
+}
+
+button[type="submit"]:active {
+  background-color: #003300;   /* pressed state */
+  transform: scale(0.97);
+}
+
+button[type="submit"]:focus {
+  outline: 3px solid #a5d6a7;  /* accessible focus ring */
+  outline-offset: 2px;
+}
+
+/* Header layout */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #005c2a;
+    color: white;
+    padding: 15px 20px;
+}
+
+header .logo {
+    height: 50px;
+}
+
+/* Desktop view */
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.menu-toggle,
+.menu-icon {
+    display: none; /* hidden on desktop */
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #005c2a;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+        border-radius: 0 0 8px 8px;
+    }
+
+    /* Show hamburger icon */
+    .menu-icon {
+        display: block;
+        font-size: 1.8em;
+        cursor: pointer;
+        color: white;
+        margin-left: auto;
+    }
+
+    /* Checkbox hack: when checked, show menu */
+    .menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+}
+
+
+    header h1 {
+        font-size: 1.2em; /* shrink title on small screens */
+    }
+
+.vsa-logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.vsa-logo-container img {
+    max-width: 200px;
+    height: auto;
+}
+
+/* Default header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #005c2a;
+    color: white;
+    padding: 20px;
+    transition: border 0.3s ease;
+}
+
+/* Highlight when a nav link is active/focused */
+.nav-links a:focus,
+.nav-links a:active {
+    outline: none;
+}
+
+/* When any nav link is clicked, highlight header */
+.nav-links a:focus ~ header,
+.nav-links a:active ~ header {
+    border: 3px solid white;
+}
+
+/* Alternative: apply directly to header when link is clicked */
+header:has(.nav-links a:focus),
+header:has(.nav-links a:active) {
+    border: 3px solid white;
+}
+
+/* Mobile toggle highlight */
+.menu-toggle:focus + .nav-links,
+.menu-toggle:active + .nav-links {
+    border: 3px solid white;
+}
+
+/* Navigation links default */
+.nav-links a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 12px; /* gives space for the outline */
+    border-radius: 4px; /* smooth corners */
+    transition: all 0.3s ease;
+}
+
+/* Hover effect: white outline */
+.nav-links a:hover {
+    outline: 2px solid white;
+    outline-offset: 2px;
+    background-color: rgba(255, 255, 255, 0.1); /* subtle background highlight */
+}
+
+
+/*register identification container*/
+.container {
+     max-width: 500px;
+     margin: auto;
+     background: white;
+     padding: 20px;
+     border-radius: 10px;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ }
+
+ label {
+     font-weight: bold;
+     margin-top: 10px;
+     display: block;
+ }
+
+ input {
+     width: 100%;
+     padding: 10px;
+     margin-top: 5px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+ }
+
+ .container button {
+     margin-top: 20px;
+     width: 100%;
+     padding: 12px;
+     background: #007bff;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 16px;
+ }

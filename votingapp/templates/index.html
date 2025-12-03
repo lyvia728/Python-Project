@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}  <!-- ✅ Add this line -->
+
+{% block title %}Vote Now{% endblock %}
+
+{% block content %}
+    <!-- Logo placement -->
+    
+    <!-- Intro text -->
+    <p><strong>Your voice matters, your vote counts!</strong></p>
+    <p>
+        At VSA, we believe democracy thrives when every South African participates.<br>
+        This platform is designed to make voting simple, accessible, and empowering.<br>
+        Whether you're here to learn, engage, or cast your vote, you're part of shaping the future of our nation.
+    </p>
+    <ul>
+        <li>Stay informed with clear updates</li>   
+        <li>Engage responsibly with your community</li>
+        <li>Vote confidently knowing your choice makes a difference.</li>
+    </ul>
+    <div class="vsa-logo-container">
+        <img src="{% static 'Voting_logo.png' %}" alt="Vote South Africa Logo" class="logo">
+    </div>
+    <p>Together, let's build a stronger South Africa — one vote at a time.</p>
+    <p><strong>Welcome to VSA, where your voice becomes action.</strong></p>
+
+    <!-- Voting form -->
+    <h2>Cast Your Vote</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for item in items %}
+            <div>
+                <input type="radio" name="vote" value="{{ item.id }}" id="item{{ item.id }}">
+                <label for="item{{ item.id }}">{{ item.title }}</label>
+            </div>
+        {% endfor %}
+        <button type="submit">click here to vote</button>
+    </form>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    <!-- Disclaimer -->
+    <hr>
+    <section class="disclaimer">
+        <h2>📝 Register to Vote</h2>
+        <p>Before you can vote in the national, provincial or municipal elections — including ward by-elections — you must register in the voting district where you live.</p>
+        <p>Find out more about registering to vote or contact the Electoral Commission (IEC).</p>
+
+        <h2>⚠️ Voting Eligibility Disclaimer</h2>
+        <p>Only South African citizens aged 18 years and older are eligible to vote.</p>
+        <p>By using this app, you confirm that you meet the legal voting age requirement. VSA complies with all IEC regulations.</p>
+        <p>If you are under 18, you may explore the app for educational purposes, but you will not be able to register or cast a vote.</p>
+    </section>
+{% endblock %}
