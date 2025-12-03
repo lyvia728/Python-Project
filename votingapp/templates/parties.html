@@ -1,0 +1,25 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Choose Your Party{% endblock %}
+
+{% block content %}
+<h2>Select Your Political Party</h2>
+<form method="post" action="{% url 'submit_vote' %}">
+    {% csrf_token %}
+    <div class="parties-grid">
+        {% for party in parties %}
+        <div class="party-card">
+            <img src="{% static party.logo %}" alt="{{ party.name }} Logo" class="party-logo">
+            <img src="{% static party.leader %}" alt="{{ party.name }} Leader" class="party-leader">
+            <label>
+                <input type="radio" name="selected_party" value="{{ party.name }}">
+                {{ party.name }}
+            </label>
+        </div>
+        {% endfor %}
+    </div>
+    <button type="submit" class="vote-btn">Vote</button>
+</form>
+{% endblock %}
