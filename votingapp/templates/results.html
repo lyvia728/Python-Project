@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Election Results{% endblock %}
+
+{% block content %}
+<h2>Election Results</h2>
+
+{% if results %}
+<table class="results-table">
+    <thead>
+        <tr>
+            <th>Party</th>
+            <th>Logo</th>
+            <th>Leader</th>
+            <th>Votes</th>
+            <th>Percentage</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for party in results %}
+        <tr>
+            <td>{{ party.name }}</td>
+            <td><img src="{% static party.logo %}" alt="{{ party.name }} Logo" class="party-logo"></td>
+            <td><img src="{% static party.leader %}" alt="{{ party.name }} Leader" class="party-leader"></td>
+            <td>{{ party.votes }}</td>
+            <td>{{ party.percentage }}%</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No votes have been cast yet.</p>
+{% endif %}
+{% endblock %}
+
