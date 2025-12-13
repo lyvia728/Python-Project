@@ -263,7 +263,7 @@ header:has(.nav-links a:active) {
      margin-top: 20px;
      width: 100%;
      padding: 12px;
-     background:rgba(255, 255, 255, 0.1;
+     background:rgba(255, 255, 255, 0.1);
      color: white;
      border: none;
      border-radius: 5px;
@@ -293,18 +293,27 @@ header:has(.nav-links a:active) {
 }
 
 .party-logo {
-    width: 60px;
-    height: auto;
-    margin-bottom: 10px;
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    margin-bottom: 4px;
 }
 
+
 .party-leader {
-    width: 80px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    border: 2px solid #004d00;
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    margin-bottom: 4px;
 }
+.party-leader {
+    width: 30px;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 4px;
+}
+
+
 
 .vote-btn {
     display: block;

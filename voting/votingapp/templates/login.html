@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h2>🔐 Voter Login</h2>
+<p>Please enter your registered details to access your voting dashboard.</p>
+
+<form method="POST" action="{% url 'login' %}" class="login-form">
+    {% csrf_token %}
+    
+    <label for="ID_number">ID Number:</label>
+    <input type="text" name="ID_number" id="ID_number" required>
+
+    <label for="cellphone">Cellphone Number:</label>
+    <input type="text" name="cellphone" id="cellphone" required>
+
+    <button type="submit" class="vote-btn">Login</button>
+</form>
+
+<!-- Optional: Display login errors -->
+{% if form.errors %}
+    <div class="form-errors">
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p class="alert error">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Disclaimer -->
+<hr>
+<section class="disclaimer">
+    <h2>⚠️ Login Disclaimer</h2>
+    <p>Only registered South African citizens may log in to vote. If you haven’t registered yet, please <a href="{% url 'register' %}">register here</a>.</p>
+</section>
+{% endblock %}

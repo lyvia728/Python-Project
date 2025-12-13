@@ -23,11 +23,21 @@ def parties(request):
     return render(request, "parties.html", {"parties": parties})
 
 def submit_vote(request):
-    if request.method == "POST":
-        selected = request.POST.get("selected_party")
-        return render(request, "index.html", {"message": f"You voted for {selected}!"})
-        messages.success(request, f"Thank you for voting for {selected_party}!")
-    return redirect("index.html")
+    if request.method == 'POST':
+        selected_party_id = request.POST.get('selected_party')
+        if not selected_party_id:
+            messages.error(request, "No party selected.")
+            return redirect('parties')
+
+        try:
+            party = Party.objects.get(id=selected_party_id)
+            Vote.objects.create(party=party)
+            messages.success(request, f"Your vote for {party.name} has been recorded.")
+        except Party.DoesNotExist:
+            messages.error(request, "Invalid party selection.")
+
+        return redirect('results')
+
 
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -84,16 +94,6 @@ def parties(request):
     parties = Party.objects.all()
     return render(request, 'parties.html', {"parties": parties})
 
-def submit_vote(request):
-    if request.method == 'POST':
-        selected_party_name = request.POST.get('selected_party')
-        try:
-            party = Party.objects.get(name=selected_party_name)
-            Vote.objects.create(party=party)
-            messages.success(request, f"Your vote for {party.name} has been recorded.")
-        except Party.DoesNotExist:
-            messages.error(request, "Invalid party selection.")
-        return redirect('results')
 
 def results(request):
     parties = Party.objects.all()
@@ -112,3 +112,25 @@ def results(request):
         })
 
     return render(request, 'results.html', {"results": results_data})
+
+def vote(request):
+    if request.method == "POST":
+        selected_party_id = request.POST.get("selected_party")
+
+        if not selected_party_id:
+            messages.error(request, "No party selected.")
+            return redirect("home")
+
+        try:
+            party = Party.objects.get(id=selected_party_id)
+        except Party.DoesNotExist:
+            messages.error(request, "Invalid party selection.")
+            return redirect("home")
+
+        # CREATE A NEW VOTE
+        Vote.objects.create(party=party)
+
+        messages.success(request, f"You voted for {party.name}")
+        return redirect("results")
+
+    return redirect("home")

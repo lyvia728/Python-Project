@@ -8,46 +8,56 @@
 </head>
 <body>
     <header>
-    <img src="{% static 'logo.png' %}" alt="VSA Logo" class="logo">
-    <h1>Welcome to Vote South Africa (VSA)</h1>
+        <img src="{% static 'logo.png' %}" alt="VSA Logo" class="logo">
+        <h1>Welcome to Vote South Africa (VSA)</h1>
 
-    <!-- Hamburger toggle using checkbox -->
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
-    <label for="menu-toggle" class="menu-icon">☰</label>
+        <!-- Hamburger toggle using checkbox -->
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">☰</label>
 
-    <!-- Navigation links -->
-    <nav class="nav-links">
-        <a href="{% url 'index' %}">Home</a>
-        <a href="{% url 'register' %}">Register</a>
-        <a href="#">Login</a>
-        <a href="#">Results</a>
-    </nav>
-</header>
+        <!-- Navigation links -->
+        <nav class="nav-links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
 
+            <a href="{% url 'results' %}">Results</a>
 
-  <main>
-    {% block content %}
-    <!-- Default content (optional) -->
-    <h1><strong>Your voice matters, your vote counts!</strong></h1>
-    <p>
-        At VSA, we believe democracy thrives when every South African participates.<br>
-        This platform is designed to make voting simple, accessible, and empowering.<br>
-        Whether you're here to learn, engage, or cast your vote, you're part of shaping the future of our nation.
-    </p>
-    <ul>
-        <li>Stay informed with clear updates</li>
-        <li>Engage responsibly with your community</li>
-        <li>Vote confidently knowing your choice makes a difference.</li>
-    </ul>
-    <p>Together, let's build a stronger South Africa — one vote at a time.</p>
-    <h1><strong>Welcome to VSA, where your voice becomes action.</strong></h1>
-    {% endblock %}
-</main>
+        </nav>
+    </header>
 
+    <main>
+        <!-- ✅ Messages block -->
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}
+        <!-- Default content (optional) -->
+        <h1><strong>Your voice matters, your vote counts!</strong></h1>
+        <p>
+            At VSA, we believe democracy thrives when every South African participates.<br>
+            This platform is designed to make voting simple, accessible, and empowering.<br>
+            Whether you're here to learn, engage, or cast your vote, you're part of shaping the future of our nation.
+        </p>
+        <ul>
+            <li>Stay informed with clear updates</li>
+            <li>Engage responsibly with your community</li>
+            <li>Vote confidently knowing your choice makes a difference.</li>
+        </ul>
+        <p>Together, let's build a stronger South Africa — one vote at a time.</p>
+        <h1><strong>Welcome to VSA, where your voice becomes action.</strong></h1>
+        {% endblock %}
+    </main>
 
     <footer>
         <p>&copy; 2025 Voting App</p>
     </footer>
 </body>
 </html>
-
